@@ -4,7 +4,7 @@
   "nav content";
   display: grid;
   grid-template-rows: 60px calc(100vh - 90px);
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 70px calc(100% - 80px);
   grid-gap: 10px;
   background: #333333;
   padding: 10px;

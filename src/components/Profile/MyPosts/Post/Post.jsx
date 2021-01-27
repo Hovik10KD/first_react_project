@@ -1,11 +1,20 @@
 import classes from "./Post.module.css";
+import profileImage from "../../../../images/profileImage.png";
+import likeIcon from "../../../../images/like.png"
 
-const Post = (props) =>{
-    return(
+const Post = (props) => {
+    return (
         <div className={classes.item}>
-            <img src="https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png"/>
-            <p>{props.message}</p>
-            <button>Like {props.likesCount}</button>
+            <div className={classes.image}>
+                <img src={profileImage} />
+            </div>
+            <div className={classes.postContent}>
+                <p>{props.message}</p>
+                <div className={classes.likes}>
+                    <button><img src={likeIcon} /></button>
+                    <span>{props.likesCount}</span>
+                </div>
+            </div>
         </div>
     )
 }

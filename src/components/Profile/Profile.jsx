@@ -3,9 +3,10 @@ import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
+  
   return (
     <div>
-      <ProfileInfo />
+      <ProfileInfo profileInfo={props.profilePage.profileInfo}/>
       <MyPosts postsData={props.profilePage.postsData}/>
     </div>
   )

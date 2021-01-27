@@ -1,0 +1,66 @@
+.myPosts{
+    padding: 20px;
+}
+
+.heading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: 100;
+    color: #ffffff;
+    margin-top: 0;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.addPost{
+    margin-bottom: 40px;
+}
+
+.addPost textarea{
+    resize: none;
+    width: 600px;
+    height: 50px;
+    max-width: 100%;
+    outline: none;
+    color: #333333;
+    font-size: 15px;
+}
+
+.buttons{
+    margin-top: 10px;
+}
+
+.addPostButton{
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background:#50C878;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-weight: normal;
+    color: #ffffff;
+    margin-right: 5px;
+}
+
+.addPostButton:hover{
+    cursor: pointer;
+    background: #00C878;
+}
+
+.removePostButton{
+    font-size: 15px;
+    border: none;
+    outline: none;
+    background:#EB4C42;
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-weight: normal;
+    color: #ffffff;
+    margin-left: 5px;
+}
+
+.removePostButton:hover{
+    cursor: pointer;
+    background: #FF3E42;
+}

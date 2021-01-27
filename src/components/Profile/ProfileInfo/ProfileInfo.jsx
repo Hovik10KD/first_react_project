@@ -1,11 +1,19 @@
 import classes from "./ProfileInfo.module.css";
+import profileImage from "../../../images/profileImage.png";
+import topImage from "../../../images/topImage.jpg";
 
 const ProfileInfo = (props) => {
+    
     return (
         <div>
-            <img className={classes.topImage} src="https://cdn.cjr.org/wp-content/uploads/2019/07/AdobeStock_100000042-e1563305717660-686x371.jpeg" />
+            <img className={classes.topImage} src={topImage} />
             <div className={classes.profile}>
-                img + description
+                <div className={classes.profileImage}>
+                    <img src={profileImage} />
+                </div>
+                <div className={classes.info}>
+                    <p className={classes.nameSurname}>{props.profileInfo.name} {props.profileInfo.surname}</p>
+                </div>
             </div>
         </div>
     )
