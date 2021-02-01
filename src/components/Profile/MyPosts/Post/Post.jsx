@@ -1,15 +1,13 @@
 import classes from "./Post.module.css";
 import profileImage from "../../../../images/profileImage.png";
-import likeIcon from "../../../../images/likeOn.png"
-import likeDefaultIcon from "../../../../images/likeOff.png"
-import { likeToggleActionCreator } from "../../../../redux/profile-reducer";
+import likeIcon from "../../../../images/likeOn.png";
+import likeDefaultIcon from "../../../../images/likeOff.png";
 
 const Post = (props) => {
 
-    let likeToggle = () =>{
-        let action = likeToggleActionCreator(props.id);
-        props.dispatch(action);
-    } 
+    let likeToggle = () => {
+        props.likeToggle(props.id);
+    }
 
     return (
         <div className={classes.item}>
