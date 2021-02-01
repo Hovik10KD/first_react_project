@@ -1,4 +1,7 @@
-let store ={
+import profileReducer from "./profile-reducer";
+import dialogsReducer from "./dialogs-reducer";
+
+let store = {
     _state: {
         profilePage: {
             profileInfo: {
@@ -26,51 +29,24 @@ let store ={
                 { id: 3, message: "message3" },
                 { id: 4, message: "message4" }
             ],
-            newMessageText:'',
+            newMessageText: '',
         }
     },
+    _callSubscriber(state) { },
 
-    getState(){
+    getState() {
         return this._state;
     },
-    
-    _rerenderEntireTree(state){},
-    
-    updateNewPostText(newText){
-        this._state.profilePage.newPostText = newText;
-        this._rerenderEntireTree(this._state);
-    },
-    
-    addPost(){
-        let newPost = {
-            id: 5,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-        };
-    
-        this._state.profilePage.postsData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this._rerenderEntireTree(this._state);
+    subscribe(observer) {
+        this._callSubscriber = observer;
     },
 
-    addMessage(){
-        let newMessage = {
-            id:5,
-            message: this._state.dialogsPage.newMessageText
-        }
-    
-        this._state.dialogsPage.messagesData.push(newMessage);
-        this._state.dialogsPage.newMessageText = '';
-        this._rerenderEntireTree(this._state);
-    },
+    dispatch(action) {
 
-    updateNewMessageText(text){
-        this._state.dialogsPage.newMessageText = text;
-        this._rerenderEntireTree(this._state);
-    },
-
-    subscribe(observer){
-        this._rerenderEntireTree = observer;
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        
+        this._callSubscriber(this._state);
     }
 }
 
