@@ -1,8 +1,16 @@
 import classes from "./Post.module.css";
 import profileImage from "../../../../images/profileImage.png";
-import likeIcon from "../../../../images/like.png"
+import likeIcon from "../../../../images/likeOn.png"
+import likeDefaultIcon from "../../../../images/likeOff.png"
+import { likeToggleActionCreator } from "../../../../redux/profile-reducer";
 
 const Post = (props) => {
+
+    let likeToggle = () =>{
+        let action = likeToggleActionCreator(props.id);
+        props.dispatch(action);
+    } 
+
     return (
         <div className={classes.item}>
             <div className={classes.image}>
@@ -11,7 +19,7 @@ const Post = (props) => {
             <div className={classes.postContent}>
                 <p>{props.message}</p>
                 <div className={classes.likes}>
-                    <button><img src={likeIcon} /></button>
+                    <button onClick={likeToggle}><img src={props.likeStatus ? likeIcon : likeDefaultIcon} /></button>
                     <span>{props.likesCount}</span>
                 </div>
             </div>

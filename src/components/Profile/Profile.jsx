@@ -3,7 +3,6 @@ import classes from "./Profile.module.css";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
 const Profile = (props) => {
-  
   return (
     <div>
       <ProfileInfo profileInfo={props.profilePage.profileInfo}/>

@@ -54,4 +54,6 @@
 .likes span{
     font-size: 15px;
     color: #ffffff;
+    font-weight: bold;
+    width: 20px;
 }
