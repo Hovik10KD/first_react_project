@@ -6,9 +6,9 @@ import { addMessageActionCreator, updateNewMessageTextActionCreator } from "../.
 
 const Dialogs = (props) => {
 
-    let dialogsElement = props.dialogsData.map(dialog => <DialogItem userName={dialog.name} userID={dialog.id} />);
+    let dialogsElement = props.dialogsData.map(dialog => <DialogItem key={dialog.id} userName={dialog.name} userID={dialog.id} />);
 
-    let messagesElement = props.messagesData.map(message => <Message message={message.message} />);
+    let messagesElement = props.messagesData.map(message => <Message key={message.id} message={message.message} />);
 
     let onAddMessage = () => {
         props.addMessage();

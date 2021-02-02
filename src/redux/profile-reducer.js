@@ -18,26 +18,49 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
 
+    let stateCopy;
+
     switch (action.type) {
+
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText;
-            return state;
+
+            stateCopy = {
+                ...state,
+                newPostText: action.newText
+            }
+
+            return stateCopy;
 
         case ADD_POST:
-            let newPost = {
-                id: state.postsData.length,
-                message: state.newPostText,
-                likesCount: 0,
-                likeStatus: false
-            };
 
-            state.postsData.push(newPost);
-            state.newPostText = '';
-            return state;
+        let newPost = {
+            id: state.postsData.length,
+            message: state.newPostText,
+            likesCount: 0,
+            likeStatus: false
+        };
+            
+        stateCopy = {
+                ...state,
+                newPostText: '',
+                postsData: [...state.postsData, newPost],
+            }
+
+            return stateCopy;
 
         case LIKE_TOGGLE:
-            state.postsData[action.postID].likeStatus ? state.postsData[action.postID].likesCount-- : state.postsData[action.postID].likesCount++;
-            state.postsData[action.postID].likeStatus = !state.postsData[action.postID].likeStatus;
+
+            stateCopy = {
+                ...state,
+                postsData: [...state.postsData]
+            }
+
+            stateCopy.postsData[action.postID] = { ...state.postsData[action.postID] };
+
+            stateCopy.postsData[action.postID].likeStatus ? stateCopy.postsData[action.postID].likesCount-- : stateCopy.postsData[action.postID].likesCount++;
+            stateCopy.postsData[action.postID].likeStatus = !stateCopy.postsData[action.postID].likeStatus;
+            
+            return stateCopy;
 
         default:
             return state;
