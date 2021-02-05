@@ -7,7 +7,7 @@ let initialState = {
 };
 
 const usersReducer = (state = initialState, action) => {
-
+    
     let stateCopy;
 
     switch (action.type) {
@@ -43,8 +43,8 @@ const usersReducer = (state = initialState, action) => {
             return stateCopy;
 
         case SET_USERS:
+
             stateCopy = { ...state, users: [...state.users, ...action.users] }
-            // stateCopy = { ...state, users: action.users }
 
             return stateCopy;
             
