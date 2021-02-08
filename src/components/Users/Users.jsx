@@ -27,7 +27,7 @@ class Users extends React.Component {
             this.props.setTotalUsersCount(response.data.totalCount);
         })
     }
-
+    
     componentWillUnmount() {
         this.props.emptyUsers();
     }
@@ -38,14 +38,14 @@ class Users extends React.Component {
         let pages = [];
 
         for (let i = 1; i <= pagesCount; i++) {
-            if (i >= this.props.currentPage && i < this.props.currentPage + 5) {
+
+            if (i >= this.props.currentPage - 2 && i < this.props.currentPage + 3) {
                 pages.push(i);
-            }
-            else if (i < this.props.currentPage && pages[0] != '...') {
-                pages.unshift(['...','first']);
-                i = this.props.currentPage - 1;
-            } else if (i >= this.props.currentPage + 5) {
-                pages.push(['...','last']);
+            } else if (i < this.props.currentPage - 2 && pages[0] != '...') {
+                pages.unshift(['...', 'first']);
+                i = this.props.currentPage - 3;
+            } else if (i >= this.props.currentPage + 3) {
+                pages.push(['...', 'last']);
                 break;
             }
         }
@@ -84,11 +84,11 @@ class Users extends React.Component {
                 <div className={classes.pages}>
                     <div>
                         {pages.map(page => {
-                            if(typeof page === 'object'){
+                            if (typeof page === 'object') {
                                 return (
                                     <div key={page[1]} className={`${classes.pageNumber}`}>{page[0]}</div>
-                                )    
-                            }else{
+                                )
+                            } else {
                                 return (
                                     <div key={page} onClick={(e) => { this.setCurrentPage(page); }} className={this.props.currentPage === page ? `${classes.active} ${classes.pageNumber}` : `${classes.pageNumber}`}>{page}</div>
                                 )
