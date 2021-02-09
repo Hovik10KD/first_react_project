@@ -148,6 +148,10 @@
     opacity: 0.5;
 }
 
+.pageNumber:hover{
+    cursor: pointer;
+}
+
 .pageNumber.active{
     opacity: 1;
     color: #ffffff;
