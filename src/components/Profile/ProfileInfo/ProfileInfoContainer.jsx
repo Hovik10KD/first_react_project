@@ -14,10 +14,10 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {}
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {}
+// }
 
-const ProfileInfoContainer = connect(mapStateToProps, mapDispatchToProps)(ProfileInfo);
+const ProfileInfoContainer = connect(mapStateToProps, {})(ProfileInfo);
 
 export default ProfileInfoContainer;

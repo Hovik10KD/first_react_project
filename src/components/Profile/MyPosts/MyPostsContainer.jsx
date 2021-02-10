@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addPostActionCreator, updateNewPostTextActionCreator, likeToggleActionCreator } from "../../../redux/profile-reducer";
+import { addPost, updatePostText, likeToggle } from "../../../redux/profile-reducer";
 import MyPosts from "./MyPosts";
 
 
@@ -37,23 +37,27 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addPost: () => {
-            let action = addPostActionCreator();
-            dispatch(action);
-        },
-        updatePostText: (newText) => {
-            let action = updateNewPostTextActionCreator(newText);
-            dispatch(action);
-        },
-        likeToggle: (postID) => {
-            let action = likeToggleActionCreator(postID);
-            dispatch(action);
-        }
-    }
-}
+// let mapDispatchToProps = (dispatch) => {
+//     return {
+//         addPost: () => {
+//             let action = addPostActionCreator();
+//             dispatch(action);
+//         },
+//         updatePostText: (newText) => {
+//             let action = updateNewPostTextActionCreator(newText);
+//             dispatch(action);
+//         },
+//         likeToggle: (postID) => {
+//             let action = likeToggleActionCreator(postID);
+//             dispatch(action);
+//         }
+//     }
+// }
 
-const MyPostsContainer = connect(mapStateToProps, mapDispatchToProps)(MyPosts);
+const MyPostsContainer = connect(mapStateToProps, {
+    addPost,
+    updatePostText,
+    likeToggle,
+})(MyPosts);
 
 export default MyPostsContainer;

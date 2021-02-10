@@ -67,20 +67,20 @@ const profileReducer = (state = initialState, action) => {
     }
 }
 
-export const updateNewPostTextActionCreator = (newText) => {
+export const updatePostText = (newText) => {
     return {
         type: UPDATE_NEW_POST_TEXT,
         newText: newText,
     }
 }
 
-export const addPostActionCreator = () => {
+export const addPost = () => {
     return {
         type: ADD_POST,
     }
 };
 
-export const likeToggleActionCreator = (postID) => {
+export const likeToggle = (postID) => {
     return {
         type: LIKE_TOGGLE,
         postID: postID
