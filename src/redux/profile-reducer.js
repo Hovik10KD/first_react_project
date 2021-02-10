@@ -1,6 +1,8 @@
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
-const LIKE_TOGGLE = 'TOGGLE-LIKE'
+const LIKE_TOGGLE = 'TOGGLE-LIKE';
+const SET_USER_PROFILE = 'SET-USER-PROFILE';
+
 
 let initialState = {
     profileInfo: {
@@ -13,7 +15,8 @@ let initialState = {
         { id: 2, message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum", likesCount: 10, likeStatus: false },
         { id: 3, message: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum", likesCount: 15, likeStatus: true }
     ],
-    newPostText: ''
+    newPostText: '',
+    profile: null,
 };
 
 const profileReducer = (state = initialState, action) => {
@@ -33,14 +36,14 @@ const profileReducer = (state = initialState, action) => {
 
         case ADD_POST:
 
-        let newPost = {
-            id: state.postsData.length,
-            message: state.newPostText,
-            likesCount: 0,
-            likeStatus: false
-        };
-            
-        stateCopy = {
+            let newPost = {
+                id: state.postsData.length,
+                message: state.newPostText,
+                likesCount: 0,
+                likeStatus: false
+            };
+
+            stateCopy = {
                 ...state,
                 newPostText: '',
                 postsData: [...state.postsData, newPost],
@@ -59,7 +62,12 @@ const profileReducer = (state = initialState, action) => {
 
             stateCopy.postsData[action.postID].likeStatus ? stateCopy.postsData[action.postID].likesCount-- : stateCopy.postsData[action.postID].likesCount++;
             stateCopy.postsData[action.postID].likeStatus = !stateCopy.postsData[action.postID].likeStatus;
-            
+
+            return stateCopy;
+
+        case SET_USER_PROFILE:
+
+            stateCopy = { ...state, profile: action.profile };
             return stateCopy;
 
         default:
@@ -84,6 +92,13 @@ export const likeToggle = (postID) => {
     return {
         type: LIKE_TOGGLE,
         postID: postID
+    }
+}
+
+export const setUserProfile = (profile) => {
+    return {
+        type: SET_USER_PROFILE,
+        profile: profile
     }
 }
 

@@ -11,6 +11,7 @@ import { connect } from "react-redux";
 let mapStateToProps = (state) => {
     return {
         profileInfo: state.profilePage.profileInfo,
+        profile: state.profilePage.profile,
     }
 }
 
